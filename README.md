@@ -1,69 +1,57 @@
-# OC/DS Projet 4 : Anticipez les besoins en consommation de bâtiments
-Formation OpenClassrooms - Parcours data scientist - Projet Professionnalisant (Décembre 2022 - Février 2023)
-
-## Secteur : 
-Énergie
-
-## Technologies utilisées : 
- * Jupyter Notebook,
- * Python
- * librairies spécifiques : HyperOpt, SHAP, scikit-learn
-
-## Mots-clés :
-régression supervisée, modèles ensemblistes
-
-## Le contexte : 
-Le client, la ville de Seattle, s’est fixé un objectif de neutralité carbone en 2050. 
-Pour atteindre cet objectif il a défini plusieurs actions dont réduire la consommation totale d’énergie et les émissions de CO2 des bâtiments non destinés à l’habitation.
-
-Il a donc besoin de monitorer ces deux cibles pour adapter sa stratégie. 
-
-## La mission : 
-Proposer deux modèles de prédiction : l’un permettant de prédire la consommation totale d’énergie des bâtiments non destinés à l’habitation, l’autre leurs émissions de CO2. 
-
-## Algorithme retenu : 
-XGBoost
-
-## Livrables :
-* notebook_exploratoire.ipynb : notebook du nettoyage et de l'analyse exploratoire
-* notebook_prediction_conso.ipynb : notebook des différents tests de modèles pour prédire la consommation totale d’énergie
-* notebook_prediction_co2.ipynb : notebook des différents tests de modèles pour prédire les émissions de CO2
-* toolbox.py : fonctions utilisées dans les notebooks
-* presentation.pdf : support de présentation pour la soutenance.
-
-## Méthodologie suivie : 
-1. Nettoyage des données :
-* sélection des variables pertinentes
-* traitement des doublons
-* traitement des valeurs aberrantes
-* traitement des valeurs manquantes
-
-2. Traitement des données :
-* feature engineering
-* choix des transformations appliquées aux variables (RobustScaler, OrdinalEncoder, TargetEncoder, Passage au logarithme, Passage au carré)
-
-3. Modélisation :
-* définition de la méthode de modélisation : pipeline + validation croisée
-* entraînement d’un modèle naïf 
-* test de plusieurs modèles :
-	- linéaires : régression linéaire, lasso, regression ridge, elastic net, svm
-	- à noyau : régression ridge à noyau, svm à noyau
-	- ensemblistes : Gboost, XGBoost, CatBoost, Bagging, Forêt aléatoire, Adaboost
-* analyse de l’impact de chaque variable sur le modèle (librairie SHAP)
-
-On recommence les étapes 2 et 3 (traitement des données et modélisation) pour améliorer les résultats.
-Une fois satisfait du choix des variables d’entrées, on passe à l’étape 4.
-
-4. Optimisation :
-* choix des meilleurs modèles : temps d’entraînement, MAE,  R2, RMSE
-* optimisation des hyperparamètres des meilleurs modèles (librairie HyperOpt)
-* choix du meilleur modèle après optimisation
-
-## Compétences acquises :  
-* Mettre en place le modèle d’apprentissage supervisé adapté au problème métier
-* Adapter les hyperparamètres d’un algorithme d’apprentissage supervisé afin de l’améliorer
-* Transformer les variables pertinentes d’un modèle d’apprentissage supervisé
-* Évaluer les performances d’un modèle d’apprentissage supervisé
-
-## Data source : 
-https://data.seattle.gov/dataset/2016-Building-Energy-Benchmarking/2bpz-gwpy
+# CO₂ Emissions Prediction
+ 
+**OpenClassrooms — Data Scientist Path | Project 4** (December 2022 – February 2023)
+ 
+> Note: project deliverables (notebooks, presentation) are in French.
+ 
+## Sector
+Energy
+ 
+## Tech Stack
+- Jupyter Notebook
+- Python: scikit-learn, HyperOpt, SHAP
+## Keywords
+supervised regression, ensemble models, hyperparameter tuning, feature importance
+ 
+## Context
+The City of Seattle has set a carbon neutrality target for 2050. As part of this strategy, the city needs to monitor two key metrics for non-residential buildings: total energy consumption and CO₂ emissions. Accurate predictions would allow the city to adapt its policy without relying solely on costly on-site measurements.
+ 
+## Mission
+Build two prediction models: one for total energy consumption, one for CO₂ emissions of non-residential buildings.
+ 
+## Selected Algorithm
+**XGBoost**
+ 
+## Deliverables
+- `notebook_exploratoire.ipynb` — data cleaning and exploratory analysis
+- `notebook_prediction_conso.ipynb` — model experiments for energy consumption prediction
+- `notebook_prediction_co2.ipynb` — model experiments for CO₂ emissions prediction
+- `toolbox.py` — helper functions used across notebooks
+- `presentation.pdf` — presentation slides (in French)
+## Methodology
+ 
+1. **Data cleaning**
+   - Select relevant variables
+   - Handle duplicates, outliers, and missing values
+2. **Feature engineering & preprocessing**
+   - Variable transformations: RobustScaler, OrdinalEncoder, TargetEncoder, log and square transformations
+3. **Modelling**
+   - Pipeline + cross-validation framework
+   - Baseline (naive) model as reference
+   - Benchmarked multiple model families:
+     - Linear: Linear Regression, Lasso, Ridge, Elastic Net, SVM
+     - Kernel: Kernel Ridge, Kernel SVM
+     - Ensemble: Gradient Boosting, XGBoost, CatBoost, Bagging, Random Forest, AdaBoost
+   - Feature importance analysis with SHAP
+   - Iterative refinement of input variables based on SHAP insights
+4. **Hyperparameter optimisation**
+   - Shortlist best models by training time, MAE, R², RMSE
+   - Optimise hyperparameters of top candidates with HyperOpt
+   - Select final model
+## Skills
+- Selecting the appropriate supervised learning algorithm for a business problem
+- Engineering and transforming features for supervised models
+- Evaluating model performance with relevant metrics
+- Tuning hyperparameters to improve model performance
+## Data Source
+[City of Seattle — 2016 Building Energy Benchmarking](https://data.seattle.gov/dataset/2016-Building-Energy-Benchmarking/2bpz-gwpy)
